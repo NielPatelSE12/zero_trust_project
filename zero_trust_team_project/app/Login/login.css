@@ -1,9 +1,16 @@
+body{
+    background: url('./logo.jpg');
+}
+
 .login-block{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #95b6d1;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, .4);
+    backdrop-filter: blur(10px);
     height: 300px;
     width: 400px;
     border-radius: 15px;
@@ -15,11 +22,13 @@
     font-weight: bold;
     font-size: 1.5rem;
     margin-top: 15px;
+    color: white;
 }
 
 .input-block{
     margin-top: 40px;
     justify-content: center;
+    padding: 10px;
 }
 
 .username{
@@ -63,12 +72,5 @@
 .sign-up{
     height: 35px;
     margin-top: 10px;
-    border-radius: 5px;
-    width: 220px;
-    background-color: rgb(228, 228, 228);
-}
-
-.sign-up:hover{
-    background-color: rgb(179, 179, 179);
-    transition: all 0.5s linear;
+    color: white;
 }
