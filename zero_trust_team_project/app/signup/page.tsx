@@ -1,16 +1,20 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import './signup.css'
 
 
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     return (
         <div className="login-block">
             <div className="welcome">
-                Welcome Back to Dronify
+                Welcome to Dronify
+            </div>
+            <div className="create">
+            Create a new account
             </div>
             <div className="input-block">
                 <input type="text" placeholder="Username" className="username" onChange={(e) => {
@@ -21,15 +25,12 @@ const Login: React.FC = () => {
                     setPassword(e.target.value)
                 }}></input>
                 <br></br>
-                <button className="login">Login</button>
+                <button className="login">Sign Up</button>
                 <br></br>
-                <div className="sign-up">
-                    First time? Sign up <a href="/signup">here</a>
-                </div>
             </div>
         </div>
     )
 }
 
 
-export default Login;
+export default Signup;

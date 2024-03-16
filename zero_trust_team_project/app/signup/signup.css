@@ -25,8 +25,13 @@ body{
     color: white;
 }
 
+.create{
+    color: white;
+    font-size: 1.2rem;
+}
+
 .input-block{
-    margin-top: 40px;
+    margin-top: 20px;
     justify-content: center;
     padding: 10px;
 }
@@ -67,16 +72,4 @@ body{
 .login:hover{
     background-color: rgb(179, 179, 179);
     transition: all 0.5s linear;
-}
-
-.sign-up{
-    height: 35px;
-    margin-top: 10px;
-    color: white;
-}
-
-.here{
-    color: blue;
-    font-weight: bold;
-    text-decoration-line: underline;
 }

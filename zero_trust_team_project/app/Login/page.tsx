@@ -25,7 +25,7 @@ const Login: React.FC = () => {
                 <button className="login">Login</button>
                 <br></br>
                 <div className="sign-up">
-                    First time? Sign up <a href="/signup">here</a>
+                    First time? Sign up <a href="/signup" className="here">here</a>
                 </div>
             </div>
         </div>
