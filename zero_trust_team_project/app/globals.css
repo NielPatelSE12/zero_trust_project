@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background: url('./dronegif.gif');
+	background-size: 2048px 1305px;
+}
+
+#border {
+  width: 250px;
+  padding: 12px;
+  border: solid black 2px;
+  background: lightblue;
+}
+
+.center {
+  text-align: center;
+  line-height: 65px;
+}
+
+.center-logo {
+  text-align: center;
+  line-height: 0px;
+  margin-right: 80px;
+}
+
+.margins {
+  margin-left: 28px;
+  margin-right: 28px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.text-outline {
+   text-shadow:
+       1px 1px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
