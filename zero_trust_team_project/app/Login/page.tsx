@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import './login.css'
-
-
+import './login.css';
+import dronify from './dronify.png'
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('')
@@ -11,7 +10,8 @@ const Login: React.FC = () => {
     return (
         <div className="login-block">
             <div className="welcome">
-                Welcome Back to Dronify
+                <h1>Welcome Back</h1>
+                <img src={dronify.src} className="dronify"/>
             </div>
             <div className="input-block">
                 <input type="text" placeholder="Username" className="username" onChange={(e) => {

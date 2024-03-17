@@ -11,22 +11,33 @@ body{
     border: 2px solid rgb(255, 255, 255, .4);
     box-shadow: 3px 7px 3px 3px #6e6e6e22;
     backdrop-filter: blur(10px);
-    height: 300px;
+    height: 350px;
     width: 400px;
     border-radius: 15px;
     text-align: center;
 }
 
 .welcome{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-top: 15px;
     color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dronify{
+    width: 300px;
+    margin-left: 25px;
+    margin-top: 10px;
 }
 
 .input-block{
-    margin-top: 40px;
+    margin-top: 30px;
     justify-content: center;
     padding: 10px;
 }
