@@ -1,18 +1,25 @@
 const mysql = require('mysql')
 
-const db = mysql.createConnection({
+// Create the connection pool.
+const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'AudiS512!',
-    database: zero_trust
+    database: 'zerotrust',
+    waitForConnections: true
 });
 
-db.connect(err => {
-    if(err){
-        console.error("Error connecting to MYSQL database", err);
-    }else{
-        console.log("Connected to MYSQL database")
-    }
-});
+function checkConnection(){
+    return new Promise((resolve,reject)=>{
+        pool.getConnection((err,connection)=>{
+            if(err){
+                reject(err);
+            }else{
+                connection.release();// This will release the connection
+                resolve();
+            }
+        })
+    })
+}
 
-module.exports = db;
+module.exports = pool.promise();

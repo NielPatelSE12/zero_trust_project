@@ -1,8 +1,11 @@
-import { NextResponse } from "next/server";
-import db from  "../../configure/db";
+import db from '../..//configure/db'
 
-try{
-    const results = await new Promise((resolve, reject) => {
-        db.query("SELECT * FROM credentials",(err:any,results:))
-    })
+export async function getServerSideProps(){
+    try{
+        const [rows] = await db.query('SELECT * FROM credentials');
+        return{props:{data: rows}};
+    }catch (err) {
+        console.error('Error fetching data',err);
+        return{props:{data:[]}};
+    }
 }
