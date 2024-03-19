@@ -4,9 +4,9 @@ import { useState } from "react";
 import './login.css';
 import dronify from './dronify.png'
 
-const Login: React.FC = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <div className="login-block">
             <div className="welcome">
@@ -14,11 +14,11 @@ const Login: React.FC = () => {
                 <img src={dronify.src} className="dronify"/>
             </div>
             <div className="input-block">
-                <input type="text" placeholder="Username" className="username" onChange={(e) => {
+                <input type="text" placeholder="Username" className="username" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setUsername(e.target.value);
                 }}></input>
                 <br></br>
-                <input type="password" placeholder="Password" className="password" onChange={(e) => {
+                <input type="password" placeholder="Password" className="password" onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setPassword(e.target.value)
                 }}></input>
                 <br></br>
@@ -31,6 +31,5 @@ const Login: React.FC = () => {
         </div>
     )
 }
-
 
 export default Login;
