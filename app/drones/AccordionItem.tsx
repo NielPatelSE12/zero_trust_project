@@ -27,7 +27,7 @@ export default function AccordiaonItem({
 
       <Collapse isOpened={open}>
         <div className="px-[50px] pb-[20px]">
-          <div className="grid-cols-5">
+          <div className="text-[15px] flex items-center justify-between my-3">
             <div>Drone Model: {DroneModel}</div>
             <div>Drone Make: {DroneMake}</div>
             <div>Drone Serial Number: {DroneSerialNumber}</div>

@@ -22,13 +22,13 @@ export default function Page() {
   return (
     <div className="flex flex-col h-screen dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
       {/* Temp Header: To be finalized*/}
-      <header className="flex justify-between items-center py-4 px-8 border-b border-gray-200">
-        <div className="flex items-center">
-          <Link className="bg-white" href="/">
+      <header className="outline flex justify-between items-center py-5 px-8 border-b border-gray-200">
+        <div className="bg-white">
+          <Link href="/">
             <img src="/dronify.png" alt="Logo" className="h-8" />
           </Link>
         </div>
-        <div className="text-lg font-bold p-5 flex items-center">
+        <div className="text-lg font-bold">
           <h1>Drones</h1>
         </div>
         <div>
