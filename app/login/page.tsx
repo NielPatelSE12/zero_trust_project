@@ -7,6 +7,7 @@ import dronify from './dronify.png'
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     return (
         <div className="login-block">
             <div className="welcome">
@@ -31,5 +32,6 @@ const Login = () => {
         </div>
     )
 }
+
 
 export default Login;
