@@ -12,3 +12,14 @@ model User {
   name    String?  @db.VarChar(255)
   email   String   @unique @db.VarChar(255)
 }
+
+model Drone {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  model           String    @db.VarChar(255)
+  make            String    @db.VarChar(255)
+  serialNumber    Int    @unique
+  batteryLife     Int
+  topSpeed        Int
+  createdAt       DateTime  @default(now())
+}
