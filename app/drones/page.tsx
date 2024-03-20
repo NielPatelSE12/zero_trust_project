@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Page() {
   const [open, setOpen] = useState(null);
-  const toggle = (index) => {
+  const toggle = (index: number | null) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
   };
   const accordionData = [

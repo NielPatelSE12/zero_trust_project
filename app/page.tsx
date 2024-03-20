@@ -14,25 +14,25 @@ export default function Home() {
 				</p>
 			</a>
 			
-			<a href = "/Login" className = "margins mr-5 text-2xl px-20" id = "border">
+			<a href = "/drones" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Drone</p>
 				</div>
 			</a>
 		
-			<a href = "/Login" className = "margins mr-5 text-2xl px-20" id = "border">
+			<a href = "/location" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Location</p>
 				</div>
 			</a>
 		
-			<a href = "/Login" className = "margins mr-5 text-2xl px-20" id = "border">
+			<a href = "/alerts" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Alerts</p>
 				</div>
 			</a>
 		
-			<a href = "/Login" className = "margins mr-5 text-2xl px-20" id = "border">
+			<a href = "/users" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Users</p>
 				</div>
