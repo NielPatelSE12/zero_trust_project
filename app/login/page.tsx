@@ -2,9 +2,9 @@
 import React from "react";
 import { useState } from "react";
 import './login.css';
-import dronify from './dronify.png'
-
-const Login = () => {
+import dronify from './dronify.png';
+import Link from "next/link";
+const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -23,7 +23,7 @@ const Login = () => {
                     setPassword(e.target.value)
                 }}></input>
                 <br></br>
-                <button className="login">Login</button>
+                <Link className="login" href="/login">Login</Link>
                 <br></br>
                 <div className="sign-up">
                     First time? Sign up <a href="/signup" className="here">here</a>
