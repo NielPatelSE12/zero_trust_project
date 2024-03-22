@@ -12,6 +12,9 @@ export default function AccordiaonItem({
   DroneSerialNumber,
   DroneBatteryLife,
   DroneTopSpeed,
+  theIndex,
+  droneData,
+  setDroneData,
 }) {
   return (
     <div className="pt-[10px]">
@@ -36,7 +39,11 @@ export default function AccordiaonItem({
           </div>
           <div className="flex flex-col items-end">
             <div className="mt-4">
-              <button className="bg-red-500 text-white py-2 px-4 rounded shadow mx-3">
+              <button className="bg-red-500 text-white py-2 px-4 rounded shadow mx-3" onClick={() => {
+                    const newData = droneData.filter((_: any, index: Number) => index !== theIndex);
+                    setDroneData(newData);
+                  // removeItem(theIndex)
+              }}>
                 Delete Drone
               </button>
               <Link href="/drones/DroneSettings">

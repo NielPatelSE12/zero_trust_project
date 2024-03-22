@@ -9,7 +9,7 @@ import DroneData from "./DroneData";
   /* Logic for Accordion list  */
 }
 export default function Page() {
-  const droneData = DroneData();
+  const [droneData, setDroneData] = useState(DroneData);
   const [open, setOpen] = useState(null);
   const toggle = (index) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
@@ -57,6 +57,9 @@ export default function Page() {
                   DroneBatteryLife={data.DroneBatteryLife}
                   DroneTopSpeed={data.DroneTopSpeed}
                   toggle={() => toggle(index)}
+                  theIndex={index}
+                  droneData={droneData}
+                  setDroneData={setDroneData}
                 />
               );
             })}

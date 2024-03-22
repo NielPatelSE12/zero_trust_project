@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function DroneData() {
-  return [
+const DroneData = [
     {
       DroneName: "This is Drone 1",
       DroneModel: "Model A",
@@ -27,4 +26,5 @@ export default function DroneData() {
       DroneTopSpeed: "25",
     },
   ];
-}
+
+export default DroneData;
