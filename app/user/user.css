@@ -1,0 +1,161 @@
+body{
+    background-image: url('./userpage.png');
+    background-size: 25%;
+}
+
+.page-center{
+    background-color: white;
+    margin: auto;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 5%;
+    width: 400px;
+    height: 50px;
+    font-weight: bold;
+    margin-top: 1%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.buttons-container {
+    margin: auto;
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-around, space-between;
+    align-items: center;
+}
+  
+
+.add-user-block{
+    margin: auto;
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 250px;
+    background: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.add-user-btn{
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 225px;
+    background: lightgreen;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.add-user-btn:hover{
+    background-color: green;
+}
+
+.remove-user-block{
+    margin: auto;
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 250px;
+    background: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.remove-user-btn{
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 225px;
+    background: coral;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.remove-user-btn:hover{
+    background-color: crimson;
+}
+
+.manage-user-block{
+    margin: auto;
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 250px;
+    background: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.manage-user-btn{
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5%;
+    padding: 10px;
+    width: 225px;
+    background: lightskyblue;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.manage-user-btn:hover{
+background-color: blue;
+}
+
+/* Popup Info */
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .input-border {
+    border: 2px solid black;
+    padding: 5px;
+  }
+  
+  .submit-border {
+    padding: 5px;
+    border: 2px solid black;
+    background-color: lightgreen;
+    font-weight: bold;
+  }
+  
+  .submit-border:hover {
+    background-color: green;
+  }
+
+  .close-button {
+    padding: 4px;
+    border: 2px solid black;
+    background-color: coral;
+    font-weight: bold;
+  }
+  
+  .close-button:hover {
+    background-color: crimson;
+  }
