@@ -3,35 +3,58 @@ import React, { useState } from "react";
 import './alerts.css';
 
 export default function Alerts() {
-    const [showPopup, setShowPopup] = useState(false);
+    const [showPopupAlerts, setShowPopupAddNewAlert] = useState(false);
+    const [showPopupModifyAlert, setShowPopupModifyAlert] = useState(false);
+    const [showPopupDeleteAlert, setShowPopupDeleteAlert] = useState(false);
     const [nameOfAlert, setNameOfAlert] = useState('');
     const [reason, setReason] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [status, setStatus] = useState('');
 
     function addNewAlert() {
-        setShowPopup(true);
+        setShowPopupAddNewAlert(true);
     }
 
-    function closePopup() {
-        setShowPopup(false);
+    function closeAddNewAlertPopup() {
+        setShowPopupAddNewAlert(false);
+    }
+
+    function modifyAlert(){
+        setShowPopupModifyAlert(true);
+    }
+
+    function closeModifyAlertPopup(){
+        setShowPopupModifyAlert(false);
+    }
+
+    function deleteAlert(){
+        setShowPopupDeleteAlert(true);
+    }
+
+    function closeDeleteAlertPopup(){
+        setShowPopupDeleteAlert(false);
     }
 
     return (
         <div className='Alerts-Page'>
-            <h1>Alerts Page</h1>
+            <div className = "heading">
+                <h1>Drone Alerts</h1>
+            </div>
+            <div className = "logo">
+            <img src = "dronify.png"></img>
+            </div>
             <div className='Alert-Features'>
-                <h1> Alert Features </h1>
+                <h1> Alert Features </h1>  
             </div>
 
             <div className='Alert-container'>
                 <div className='Add-New-Alert'>
-                    <button className="Add-New-Alert-btn" onClick={addNewAlert}> ADD NEW ALERT </button>
-                </div>
+                    <button className="Add-New-Alert-btn" onClick={addNewAlert}> ADD ALERT </button>
+            </div>
 
-                {showPopup && (
+                {showPopupAlerts && (
                     <div className="popup" id="popup-1">
-                        <div className="overlay" onClick={closePopup}></div>
+                        <div className="overlay" onClick={closeAddNewAlertPopup}></div>
                         <div className="content">
                             <div className="text-box-title"><h1>Add New Alert </h1></div>
                             <input type="text" placeholder="name of alert" className="name-of-alert" onChange={(e) => {
@@ -48,18 +71,58 @@ export default function Alerts() {
                             }}></input>
                             <br></br>
                             <button className="confirm-btn"><p>Confirm</p></button>
-                            <div className="close-btn" onClick={closePopup}>&times;</div>
+                            <div className="close-btn" onClick={closeAddNewAlertPopup}>&times;</div>
                         </div>
                     </div>
                 )}
 
                 <div className='Modify-Alert'>
-                    <button> MODIFY ALERT </button>
+                    <button className = "modify-alert-btn" onClick ={modifyAlert}> MODIFY ALERT </button>
                 </div>
 
+                {showPopupModifyAlert && (
+                    <div className="popup" id="popup-1">
+                        <div className="overlay" onClick={closeModifyAlertPopup}></div>
+                        <div className="content">
+                            <div className="text-box-title"><h1>Modify Alert </h1></div>
+                            <input type="text" placeholder="alert id" className="alert-id" onChange={(e) => {
+                                setNameOfAlert(e.target.value)
+                            }}></input>
+                            <input type="text" placeholder="reason" className="reason" onChange={(e) => {
+                                setReason(e.target.value)
+                            }}></input>
+                            <input type="text" placeholder="error message" className="error-message" onChange={(e) => {
+                                setErrorMessage(e.target.value)
+                            }}></input>
+                            <input type="text" placeholder="status" className="status" onChange={(e) => {
+                                setStatus(e.target.value)
+                            }}></input>
+                            <br></br>
+                            <button className="modify-btn"><p>Modify</p></button>
+                            <div className="close-btn" onClick={closeModifyAlertPopup}>&times;</div>
+                        </div>
+                    </div>
+                )}
+
                 <div className='Delete-Alert'>
-                    <button> DELETE ALERT </button>
+                    <button className = "delete-alert-btn" onClick ={deleteAlert}> DELETE ALERT </button>
                 </div>
+                
+                {showPopupDeleteAlert && (
+                    <div className="popup" id="popup-1">
+                        <div className="overlay" onClick={closeDeleteAlertPopup}></div>
+                        <div className="content">
+                            <div className="text-box-title"><h1>Delete Alert </h1></div>
+                            <br></br>
+                            <input type="text" placeholder="alert id" className="alert-id" onChange={(e) => {
+                                setNameOfAlert(e.target.value)
+                            }}></input>
+                            <br></br><br></br><br></br>
+                            <button className="delete-btn"><p>Delete</p></button>
+                            <div className="close-btn" onClick={closeDeleteAlertPopup}>&times;</div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     )

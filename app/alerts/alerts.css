@@ -7,17 +7,30 @@ body{
     margin:auto;
     border-color: black;
     border-width:5px;
-    border-radius:5%;
+    border-radius:3%;
     padding:10px;
     width:450px;
     height:45px;
     font-weight:bold;
-    margin-top:5px;
+    margin-top:10px;
+    font-size:15px;
+}
+
+.logo{
+    position:absolute;
+    top:10px;
+    right:0;
+    width:250px;
+    height:250px;
 }
 
 
 .Alert-Features{
-    margin:auto;
+    position:absolute;
+    top: 100px;
+    margin-top: 40px;
+    margin-left: 107px;
+    margin-bottom:1px;
     text-align:center;
     border-color: magenta;
     border-width:8px;
@@ -29,23 +42,22 @@ body{
     font-weight:bold;
 }
 
-.Add-New-Alert,.Modify-Alert,.Delete-Alert{
-    float: left;
-    margin-left: 98px;
-    margin-right: 98px;
-    
-}
-
 .Add-New-Alert{
+    position:absolute;
+    top:250px;
+    left: 10px;
+    margin-top:25px;
+    margin-right:50px;
+    margin-left:108px;
     text-align:center;
     border-color: black;
     border-width:3px;
     border-radius:5%;
     padding:10px;
-    width:225px;
-    background:rgb(3,253,3);
+    width:200px;
     font-size:23px;
     font-weight:bold;
+    background:rgb(3,253,3);
 }
 
 .Add-New-Alert:hover{
@@ -53,6 +65,10 @@ body{
 }
 
 .Modify-Alert{
+    position:absolute;
+    top:250px;
+    margin-top:25px;
+    margin-left:108px;
     text-align:center;
     border-color: black;
     border-width:3px;
@@ -69,6 +85,11 @@ body{
 }
 
 .Delete-Alert{
+    position:absolute;
+    top:250px;
+    left:775px;
+    margin-top:25px;
+    margin-left:108px;
     text-align:center;
     border-color: black;
     border-width:3px;
@@ -147,7 +168,7 @@ body{
 .confirm-btn{
     width:125px;
     border-width:2px;
-    background-color:lightblue;
+    background-color:green;
     border-color:black;
     margin-top:20px;
     font-size:17px;
@@ -157,4 +178,24 @@ body{
 .name-of-alert{
     margin-top:5px;
 
+}
+
+.modify-btn{
+    width:125px;
+    border-width:2px;
+    background-color:yellow;
+    border-color:black;
+    margin-top:20px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.delete-btn{
+    width:125px;
+    border-width:2px;
+    background-color:red;
+    border-color:black;
+    margin-top:20px;
+    font-size:17px;
+    font-weight:bold;
 }
