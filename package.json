@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.11.0",
     "mysql": "^2.18.1",
@@ -18,7 +21,7 @@
     "react-icons": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.11.30",
     "@types/react": "^18",
     "@types/react-collapse": "^5.0.4",
     "@types/react-dom": "^18",
@@ -29,7 +32,8 @@
     "nodemon": "^3.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
   },
   "description": "First, run the development server:",
   "main": "postcss.config.js",
