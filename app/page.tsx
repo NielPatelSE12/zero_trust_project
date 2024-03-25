@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 			<a href = "/drones" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Drone</p>
+					<Link href="/drones/DroneSettings"></Link>
 				</div>
 			</a>
 		
