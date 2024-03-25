@@ -2,32 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+    background: url('./dronegif.gif');
+	background-size: 2048px 1305px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+#border {
+  width: 250px;
+  padding: 12px;
+  border: solid black 2px;
+  background: lightblue;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.center {
+  text-align: center;
+  line-height: 65px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.center-logo {
+  text-align: center;
+  line-height: 0px;
+  margin-right: 80px;
+}
+
+.margins {
+  margin-left: 28px;
+  margin-right: 28px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.text-outline {
+   text-shadow:
+       1px 1px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
