@@ -32,7 +32,7 @@ export default function Home() {
 				</div>
 			</a>
 		
-			<a href = "/user" className = "margins mr-5 text-2xl px-20" id = "border">
+			<a href = "/users" className = "margins mr-5 text-2xl px-20" id = "border">
 				<div className = "margins">
 					<p className = "center">Users</p>
 				</div>
