@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Drone 1",
+    "Model": "Model A",
+    "Make": "Maker 1",
+    "SerialNumber": "123",
+    "BatteryLife": "100",
+    "TopSpeed": "40"
+  },
+  {
+    "Name": "Drone 2",
+    "Model": "Model B",
+    "Make": "Maker 2",
+    "SerialNumber": "456",
+    "BatteryLife": "99",
+    "TopSpeed": "35"
+  },
+  {
+    "Name": "Drone 3",
+    "Model": "Model C",
+    "Make": "Maker 1",
+    "SerialNumber": "789",
+    "BatteryLife": "10",
+    "TopSpeed": "25"
+  }
+]
