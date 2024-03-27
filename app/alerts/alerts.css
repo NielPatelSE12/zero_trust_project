@@ -1,0 +1,201 @@
+body{
+    background-image: url('./drone_alert_img.png');
+    background-size: 24.7%;
+}
+
+.Alerts-Page{
+    margin:auto;
+    border-color: black;
+    border-width:5px;
+    border-radius:3%;
+    padding:10px;
+    width:450px;
+    height:45px;
+    font-weight:bold;
+    margin-top:10px;
+    font-size:15px;
+}
+
+.logo{
+    position:absolute;
+    top:10px;
+    right:0;
+    width:250px;
+    height:250px;
+}
+
+
+.Alert-Features{
+    position:absolute;
+    top: 100px;
+    margin-top: 40px;
+    margin-left: 107px;
+    margin-bottom:1px;
+    text-align:center;
+    border-color: magenta;
+    border-width:8px;
+    border-radius:5%;
+    padding:10px;
+    width:200px;
+    background:aqua;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.Add-New-Alert{
+    position:absolute;
+    top:250px;
+    left: 10px;
+    margin-top:25px;
+    margin-right:50px;
+    margin-left:108px;
+    text-align:center;
+    border-color: black;
+    border-width:3px;
+    border-radius:5%;
+    padding:10px;
+    width:200px;
+    font-size:23px;
+    font-weight:bold;
+    background:rgb(3,253,3);
+}
+
+.Add-New-Alert:hover{
+    background:  greenyellow;
+}
+
+.Modify-Alert{
+    position:absolute;
+    top:250px;
+    margin-top:25px;
+    margin-left:108px;
+    text-align:center;
+    border-color: black;
+    border-width:3px;
+    border-radius:5%;
+    padding:10px;
+    width:200px;
+    background: yellow;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.Modify-Alert:hover{
+    background:rgb(253, 253, 132);
+}
+
+.Delete-Alert{
+    position:absolute;
+    top:250px;
+    left:775px;
+    margin-top:25px;
+    margin-left:108px;
+    text-align:center;
+    border-color: black;
+    border-width:3px;
+    border-radius:5%;
+    padding:10px;
+    width:200px;
+    background: red;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.Delete-Alert:hover{
+    background: rgb(251, 71, 71);
+}
+
+.Alerts-Page{
+    text-align:center;
+}
+
+/* Popups */
+.popup .overlay{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index: 1;
+}
+
+.popup .content{
+    margin-top:10px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#fff;
+    width:450px;
+    height:220px;
+    z-index:2;
+    text-align:left;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.popup .close-btn{
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    background:red;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+}
+
+.popup.active .overlay{
+    display:block;
+}
+
+.popup .active .content{
+  transition:all 800ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1); 
+}
+
+.text-box-title{
+    font-size:24px;
+}
+
+
+.confirm-btn{
+    width:125px;
+    border-width:2px;
+    background-color:green;
+    border-color:black;
+    margin-top:20px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.name-of-alert{
+    margin-top:5px;
+
+}
+
+.modify-btn{
+    width:125px;
+    border-width:2px;
+    background-color:yellow;
+    border-color:black;
+    margin-top:20px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.delete-btn{
+    width:125px;
+    border-width:2px;
+    background-color:red;
+    border-color:black;
+    margin-top:20px;
+    font-size:17px;
+    font-weight:bold;
+}
