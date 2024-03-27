@@ -4,12 +4,12 @@ import Link from "next/link";
 import AccordionItem from "./AccordionItem";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import DroneData from "./DroneData";
+import GetDroneData from "./getDroneData";
 {
   /* Logic for Accordion list  */
 }
 export default function Page() {
-  const [droneData, setDroneData] = useState(DroneData);
+  const [droneData, setDroneData] = useState(GetDroneData);
   const [open, setOpen] = useState(null);
   const toggle = (index) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
@@ -50,15 +50,10 @@ export default function Page() {
                 <AccordionItem
                   key={index}
                   open={index === open}
-                  DroneName={data.DroneName}
-                  DroneModel={data.DroneModel}
-                  DroneMake={data.DroneMake}
-                  DroneSerialNumber={data.DroneSerialNumber}
-                  DroneBatteryLife={data.DroneBatteryLife}
-                  DroneTopSpeed={data.DroneTopSpeed}
                   toggle={() => toggle(index)}
                   theIndex={index}
                   droneData={droneData}
+                  droneDatas={data}
                   setDroneData={setDroneData}
                 />
               );

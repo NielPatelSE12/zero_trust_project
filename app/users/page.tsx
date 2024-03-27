@@ -1,8 +1,7 @@
 "use client"
 import React, { useState } from "react";
-import './user.css';
+import './users.css';
 import Modal from './modal';
-//import LinkButton from './linkbutton';
 
 export default function UserPage() {
     const [isModalOpen, setModalOpen] = useState(false);
