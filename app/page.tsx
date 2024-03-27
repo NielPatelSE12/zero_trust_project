@@ -14,34 +14,23 @@ export default function Home() {
 			</a>
 			
 			<a href = "/drones" className = "margins mr-5 text-2xl" id = "border">
-				<div className = "margins">
 					<p className = "center">Drones</p>
-					<Link href="/drones/DroneSettings"></Link>
-				</div>
 			</a>
 		
 			<a href = "/location" className = "margins mr-5 text-2xl px-20" id = "border">
-				<div className = "margins">
 					<p className = "center">Location</p>
-				</div>
 			</a>
 		
 			<a href = "/alerts" className = "margins mr-5 text-2xl px-20" id = "border">
-				<div className = "margins">
 					<p className = "center">Alerts</p>
-				</div>
 			</a>
 		
 			<a href = "/users" className = "margins mr-5 text-2xl px-20" id = "border">
-				<div className = "margins">
 					<p className = "center">Users</p>
-				</div>
 			</a>
 			
 			<a href = "/login" className = "margins mr-5 text-2xl px-20" id = "border">
-				<div className = "margins">
 					<p className = "center">Login</p>
-				</div>
 			</a>
 			
 		</div>
