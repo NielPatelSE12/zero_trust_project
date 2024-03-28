@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { Collapse } from "react-collapse";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useRouter } from "next/router";
+import { BsTrash } from "react-icons/bs";
+import { MdEditNote } from "react-icons/md";
 
 export default function AccordiaonItem({
   open,
@@ -26,18 +27,31 @@ export default function AccordiaonItem({
       </div>
 
       <Collapse isOpened={open}>
-        <div className="px-[50px] pb-[20px]">
-          <div className="text-[15px] flex items-center justify-between my-3">
-            <div>Drone Model: {data.Model}</div>
-            <div>Drone Make: {data.Model}</div>
-            <div>Drone Serial Number: {data.SerialNumber}</div>
-            <div>Drone Top Speed: {data.TopSpeed}</div>
-            <div>Drone Battery: {data.BatteryLife}</div>
-          </div>
-          <div className="flex flex-col items-end">
+        <div className="p-5 flex flex-col items-center">
+          <table className="w-full text-xl text-left">
+            <thead>
+              <tr className="font-semibold text-left bg-gray-700/50">
+                <th>Model</th>
+                <th>Make</th>
+                <th>Top Speed</th>
+                <th>Serial Number</th>
+                <th>Battery</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-gray-800/50">
+                <td>{data.Model}</td>
+                <td>{data.Make}</td>
+                <td>{data.TopSpeed}</td>
+                <td>{data.SerialNumber}</td>
+                <td>{data.BatteryLife}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="place-self-end">
             <div className="mt-4">
               <button
-                className="bg-red-500 text-white py-2 px-4 rounded shadow mx-3"
+                className="bg-red-500 text-white py-2 px-2 rounded shadow mx-3"
                 onClick={() => {
                   const newData = droneData.filter(
                     (_: any, index: Number) => index !== theIndex
@@ -46,7 +60,10 @@ export default function AccordiaonItem({
                   // removeItem(theIndex)
                 }}
               >
-                Delete Drone
+                <div className="flex items-center">
+                  <BsTrash className="mr-1" />
+                  Delete Drone
+                </div>
               </button>
               <Link
                 href={{
@@ -54,8 +71,11 @@ export default function AccordiaonItem({
                   query: { ...data },
                 }}
               >
-                <button className="outline outline-1 outline-black bg-slate-100  text-black py-2 px-4 rounded shadow">
-                  Modify Drone
+                <button className=" bg-slate-100 text-black py-2 px-2 rounded shadow mx-3">
+                  <div className="flex items-center">
+                    <MdEditNote />
+                    Modify Drone
+                  </div>
                 </button>
               </Link>
             </div>
