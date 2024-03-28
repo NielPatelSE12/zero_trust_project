@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { useSearchParams } from "next/navigation";
+import Heading from "../heading";
 
 export default function Example() {
   const searchParams = useSearchParams();
@@ -69,20 +68,7 @@ export default function Example() {
   return (
     <div className="flex flex-col h-screen overscroll-auto dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
       {/* Temp Header: To be finalized*/}
-      <header className="flex justify-between items-center py-4 px-8 border-b border-gray-200">
-        <div className="flex items-center">
-          <Link className="bg-white" href="/">
-            <img src="/dronify.png" alt="Logo" className="h-8" />
-          </Link>
-        </div>
-        <div className="text-lg font-bold p-5 flex items-center">
-          <h1>Drones</h1>
-        </div>
-        <div>
-          <RxHamburgerMenu className="text-2xl" />
-        </div>
-      </header>
-
+      <Heading></Heading>
       <form onSubmit={handleSubmit}>
         <div className="h-full space-y-12 p-5 dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
           <div className="border-b border-gray-500/10 pb-12">
@@ -174,6 +160,11 @@ export default function Example() {
                       id="SerialNumber"
                       value={formData.SerialNumber}
                       onChange={handleChange}
+                      disabled={
+                        formData.SerialNumber ===
+                          initialFormData.SerialNumber &&
+                        initialFormData.SerialNumber !== ""
+                      }
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       placeholder="Serial Number"
                     />
