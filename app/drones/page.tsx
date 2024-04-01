@@ -54,7 +54,6 @@ export default function Page() {
       </main>
 
       {/* Footer */}
-      <footer className="py-4 px-8 border-t border-gray-200"></footer>
     </div>
   );
 }
