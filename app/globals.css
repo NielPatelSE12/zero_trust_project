@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: url("./mainbg.png");
-  background-size: 256px 256px;
-}
-
 .welcome-block{
     position: fixed;
     left: 50%;
