@@ -1,0 +1,80 @@
+/* location.css */
+
+/* Top Navigation Bar */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Adjust color as needed */
+    color: white;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+
+.location-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.option {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    max-width: calc(100% - 20px);
+    text-align: center;
+}
+
+.option h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.option form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option form label {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.option form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.option form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.option form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+  
+ 
+  
