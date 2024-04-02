@@ -67,7 +67,7 @@ export default function AccordiaonItem({
               </button>
               <Link
                 href={{
-                  pathname: "/drones/DroneSettings/",
+                  pathname: "/drones/droneEdit/",
                   query: { ...data },
                 }}
               >

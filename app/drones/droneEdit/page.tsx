@@ -66,12 +66,12 @@ export default function Example() {
   };
 
   return (
-    <div className="flex flex-col h-full overscroll-auto dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
+    <div className="flex flex-col h-full dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
       {/* Temp Header: To be finalized*/}
       <Heading></Heading>
       <form
         onSubmit={handleSubmit}
-        className="border-b border-gray-500/10 pb-12"
+        className="border-b border-gray-500/10 pb-32 pl-6"
       >
         {/*Drone Name item*/}
         <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">

@@ -29,7 +29,7 @@ export default function Page() {
             <p className="text-white py-2 pr-4 pl-1 my-2 text-xl">
               Drone List:
             </p>
-            <Link href="/drones/DroneSettings">
+            <Link href="/drones/droneEdit">
               <button className="bg-green-500 text-white py-2 px-4 rounded shadow my-2 flex items-center">
                 <AiOutlinePlus className="mr-1" /> Drone
               </button>
