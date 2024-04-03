@@ -1,28 +1,30 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import AccordionItem from "./AccordionItem";
-import { useState } from "react";
-import GetDroneData from "./getDroneData";
 import { AiOutlinePlus } from "react-icons/ai";
 import Heading from "./heading";
 
 export default function Page() {
-  const [droneData, setDroneData] = useState(GetDroneData);
+  const [droneData, setDroneData] = useState([]);
   const [open, setOpen] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchDroneData() {
+      const response = await fetch("/api/drones");
+      const data = await response.json();
+      setDroneData(data);
+    }
+    fetchDroneData();
+  }, []);
 
   const toggle = (index: number) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
   };
 
-  {
-    /* Backend replace title and desc with drone information  when adding or removing items in 
-  accordion data make sure to also update the AccordionItem.tsx file */
-  }
   return (
     <div className="flex flex-col h-screen dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 overflow-auto text-white">
-      <Heading></Heading>
-      {/* Main Content */}
+      <Heading />
       <main className="flex-1 flex justify-center items-center">
         <div className="flex flex-col items-center w-[80%]">
           <div className="flex content-end justify-between w-full">
@@ -52,8 +54,6 @@ export default function Page() {
           </ul>
         </div>
       </main>
-
-      {/* Footer */}
     </div>
   );
 }
