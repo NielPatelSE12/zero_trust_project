@@ -25,7 +25,15 @@ const Signup: React.FC = () => {
                     setPassword(e.target.value)
                 }}></input>
                 <br></br>
-                <button className="login">Sign Up</button>
+                <button className="login" onClick={() => {
+                    fetch('http://localhost:5000/signup', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({username, password})
+                    }).then(response => response.json().then(
+                        thing => console.log(thing)))
+                    console.log(12345)
+                }}>Sign Up</button>
                 <br></br>
             </div>
         </div>
