@@ -88,6 +88,9 @@ export default function Alerts() {
                             <input type="text" placeholder="alert id" className="alert-id" onChange={(e) => {
                                 setNameOfAlert(e.target.value)
                             }}></input>
+                            <input type="text" placeholder="name of alert" className="alert-name" onChange={(e) => {
+                                setNameOfAlert(e.target.value)
+                            }}></input>
                             <input type="text" placeholder="reason" className="reason" onChange={(e) => {
                                 setReason(e.target.value)
                             }}></input>
