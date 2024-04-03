@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import './users.css';
 import Modal from './modal';
+import Heading from '../drones/heading'
 
 export default function UserPage() {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -47,6 +48,7 @@ export default function UserPage() {
 
     return (
         <div>
+            <Heading />
             <div className="page-center">
                 User Management
             </div>

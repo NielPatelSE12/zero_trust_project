@@ -4,6 +4,7 @@ import { useState } from "react";
 import './login.css';
 import dronify from './dronify.png'
 import { useRouter } from "next/navigation";
+import Heading from '../drones/heading'
 
 const Login: React.FC = () => {
     const router = useRouter();
@@ -27,29 +28,32 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div className="login-block">
-            <div className="welcome">
-                <h1>Welcome Back</h1>
-                <img src={dronify.src} className="dronify"/>
-            </div>
-            <div className="input-block">
-                <input type="text" placeholder="Username" className="username" onChange={(e) => {
-                    setUsername(e.target.value);
-                }}></input>
-                <br></br>
-                <input type="password" placeholder="Password" className="password" onChange={(e) => {
-                    setPassword(e.target.value)
-                }}></input>
-                <br></br>
-                <button className="login" onClick={() => {
-                    handleLogin();
-                }}>Login</button>
-                <br></br>
-                <div className="sign-up">
-                    First time? Sign up <a href="/signup" className="here">here</a>
+        <>
+            <Heading/>
+            <div className="login-block">
+                <div className="welcome">
+                    <h1>Welcome Back</h1>
+                    <img src={dronify.src} className="dronify"/>
+                </div>
+                <div className="input-block">
+                    <input type="text" placeholder="Username" className="username" onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}></input>
+                    <br></br>
+                    <input type="password" placeholder="Password" className="password" onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}></input>
+                    <br></br>
+                    <button className="login" onClick={() => {
+                        handleLogin();
+                    }}>Login</button>
+                    <br></br>
+                    <div className="sign-up">
+                        First time? Sign up <a href="/signup" className="here">here</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
