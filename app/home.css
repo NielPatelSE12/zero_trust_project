@@ -1,9 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  background: url("./mainbg.png");
-  background-size: 256px 256px;
+.welcome-block {
+  background:url("./homepagebackground.png");
+  max-width: 600px;
+  margin: 16% 28%; 
+  padding: 10px;
 }
+
+@media (min-width: 768px) {
+  .welcome-block {
+    padding: 60px;
+  }
+}
+
+.background{
+  background: url("./homepagebackground.png")
+}
+
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 
