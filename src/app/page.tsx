@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/app/page.tsx
-"use client";
-import Heading from "./drones/heading"
-=======
 import Image from "next/image";
 import Heading from "./drones/heading";
->>>>>>> befb555a2744b0ec211937a407244052aecd1f74:app/page.tsx
 import './home.css';
 import backgroundImage from "./home.jpeg";
 
