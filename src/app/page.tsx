@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Heading from "./drones/heading"
 import './home.css';
 

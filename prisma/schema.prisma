@@ -1,6 +1,6 @@
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 generator client {
@@ -9,15 +9,15 @@ generator client {
 
 model User {
   id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
+  name    String?  
+  email   String   @unique
 }
 
 model Drone {
   id              Int       @id @default(autoincrement())
-  name            String    @db.VarChar(255)
-  model           String    @db.VarChar(255)
-  make            String    @db.VarChar(255)
+  name            String    
+  model           String    
+  make            String    
   serialNumber    Int    @unique
   batteryLife     Int
   topSpeed        Int

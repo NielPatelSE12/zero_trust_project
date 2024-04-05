@@ -5,18 +5,28 @@ import AccordionItem from "./AccordionItem";
 import { AiOutlinePlus } from "react-icons/ai";
 import Heading from "./heading";
 
+interface Drone {
+  id: number;
+  name: string;
+  model: string;
+  make: string;
+  serialNumber: number;
+  batteryLife: number;
+  topSpeed: number;
+}
+
 export default function Page() {
-  const [droneData, setDroneData] = useState([]);
   const [open, setOpen] = useState<number | null>(null);
+  const [drones, setDrones] = useState<Drone[]>([]);
 
   useEffect(() => {
-    async function fetchDroneData() {
-      const response = await fetch("/api/drones");
-      const data = await response.json();
-      setDroneData(data);
-    }
-    fetchDroneData();
+    fetch('/api/getAllDrones')
+      .then(response => response.json())
+      .then(data => setDrones(data))
+      .catch(error => console.error('Error fetching drones:', error));
   }, []);
+
+  console.log(drones);
 
   const toggle = (index: number) => {
     setOpen((prevOpen) => (prevOpen === index ? null : index));
@@ -29,7 +39,7 @@ export default function Page() {
         <div className="flex flex-col items-center w-[80%]">
           <div className="flex content-end justify-between w-full">
             <p className="text-white py-2 pr-4 pl-1 my-2 text-xl">
-              Drone List:
+              
             </p>
             <Link href="/drones/droneEdit">
               <button className="bg-green-500 text-white py-2 px-4 rounded shadow my-2 flex items-center">
@@ -37,20 +47,19 @@ export default function Page() {
               </button>
             </Link>
           </div>
-          <ul className="border rounded shadow-lg p-4 w-full ">
-            {droneData.map((data, index) => {
-              return (
+          <ul className="border rounded shadow-lg p-4 w-full">
+            {drones.map((drone, index) => (
+              <li key={drone.id} className="mb-4">
                 <AccordionItem
-                  key={index}
                   open={index === open}
                   toggle={() => toggle(index)}
                   theIndex={index}
-                  droneData={droneData}
-                  droneDatas={data}
-                  setDroneData={setDroneData}
+                  droneData={drones}
+                  droneDatas={drone}
+                  setDroneData={setDrones}
                 />
-              );
-            })}
+              </li>
+            ))}
           </ul>
         </div>
       </main>

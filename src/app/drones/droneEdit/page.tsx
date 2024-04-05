@@ -3,35 +3,39 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Heading from "../heading";
 
-export default function Example() {
+export default function EditDronePage() {
   const searchParams = useSearchParams();
-  const droneSN = searchParams.get("SerialNumber");
-  const droneName = searchParams.get("Name");
-  const droneSpeed = searchParams.get("TopSpeed");
-  const droneBat = searchParams.get("BatteryLife");
-  const droneMake = searchParams.get("Make");
-  const droneModel = searchParams.get("Model");
+  const droneId = searchParams.get("id");
 
-  interface FormData {
-    Name: string;
-    Model: string;
-    Make: string;
-    SerialNumber: string;
-    BatteryLife: string;
-    TopSpeed: string;
-  }
-  const initialFormData: FormData = {
-    Name: droneName || "",
-    Model: droneModel || "",
-    Make: droneMake || "",
-    SerialNumber: droneSN || "",
-    BatteryLife: droneBat || "",
-    TopSpeed: droneSpeed || "",
-  };
+  const [formData, setFormData] = useState({
+    name: "",
+    model: "",
+    make: "",
+    serialNumber: "",
+    batteryLife: "",
+    topSpeed: "",
+  });
 
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    if (droneId) {
+      // Fetch existing drone data if editing
+      fetch(`/api/drone/${droneId}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch drone data");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setFormData(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching drone data:", error);
+        });
+    }
+  }, [droneId]);
+  
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -39,45 +43,66 @@ export default function Example() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
+    console.log(JSON.stringify(formData));
     e.preventDefault();
-    // Add your logic to handle form submission, such as updating state or sending data to the server
-    console.log(formData);
-    // Reset form data after submission
-    setFormData({
-      Name: "",
-      Model: "",
-      Make: "",
-      SerialNumber: "",
-      BatteryLife: "",
-      TopSpeed: "",
-    });
-  };
+    try {
+      const response = await fetch(
+        `/api/drone/createDrone`,
+        {
+          method: droneId ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error(
+          `Failed to ${droneId ? "update" : "create"} drone`
+        );
+      }
+  
+      // Reset form data after submission
+      setFormData({
+        name: "",
+        model: "",
+        make: "",
+        serialNumber: "",
+        batteryLife: "",
+        topSpeed: "",
+      });
+
+    } catch (error) {
+      console.error("Error submitting drone data:", error);
+    }
+  };  
+
   const handleCancel = () => {
     // Reset form data to initial state
     setFormData({
-      Name: "",
-      Model: "",
-      Make: "",
-      SerialNumber: "",
-      BatteryLife: "",
-      TopSpeed: "",
+      name: "",
+      model: "",
+      make: "",
+      serialNumber: "",
+      batteryLife: "",
+      topSpeed: "",
     });
   };
 
   return (
     <div className="flex flex-col h-full dark:bg-gradient-to-b dark:from-gray-900 dark:via-indigo-800 dark:to-gray-600 bg-gradient-to-b from-blue-900 via-blue-600 to-blue-200 text-white">
       {/* Temp Header: To be finalized*/}
-      <Heading></Heading>
+      <Heading />
       <form
         onSubmit={handleSubmit}
         className="border-b border-gray-500/10 pb-32 pl-6"
       >
-        {/*Drone Name item*/}
         <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div className="sm:col-span-4">
             <label
-              htmlFor="Name"
+              htmlFor="name"
               className="block text-sm font-medium leading-6 text-white"
             >
               Drone Name
@@ -85,11 +110,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="Name"
-                id="Name"
-                value={formData.Name}
+                name="name"
+                id="name"
+                value={formData.name}
                 onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Drone Name"
               />
             </div>
@@ -98,7 +123,7 @@ export default function Example() {
           {/* Model form item */}
           <div className="sm:col-span-4 mt-2">
             <label
-              htmlFor="Model"
+              htmlFor="model"
               className="block text-sm font-medium leading-6 text-white"
             >
               Drone Model
@@ -106,11 +131,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="Model"
-                id="Model"
-                value={formData.Model}
+                name="model"
+                id="model"
+                value={formData.model}
                 onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Drone Model"
               />
             </div>
@@ -119,7 +144,7 @@ export default function Example() {
           {/* Make form item */}
           <div className="sm:col-span-4 mt-2">
             <label
-              htmlFor="Make"
+              htmlFor="make"
               className="block text-sm font-medium leading-6 text-white"
             >
               Drone Make
@@ -127,11 +152,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="Make"
-                id="Make"
-                value={formData.Make}
+                name="make"
+                id="make"
+                value={formData.make}
                 onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Drone Maker"
               />
             </div>
@@ -140,7 +165,7 @@ export default function Example() {
           {/* Serial Number form item */}
           <div className="sm:col-span-4 mt-2">
             <label
-              htmlFor="SerialNumber"
+              htmlFor="serialNumber"
               className="block text-sm font-medium leading-6 text-white"
             >
               Serial Number
@@ -148,15 +173,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="SerialNumber"
-                id="SerialNumber"
-                value={formData.SerialNumber}
+                name="serialNumber"
+                id="serialNumber"
+                value={formData.serialNumber}
                 onChange={handleChange}
-                disabled={
-                  formData.SerialNumber === initialFormData.SerialNumber &&
-                  initialFormData.SerialNumber !== ""
-                }
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Serial Number"
               />
             </div>
@@ -165,7 +186,7 @@ export default function Example() {
           {/* Battery Info form item */}
           <div className="sm:col-span-4 mt-2">
             <label
-              htmlFor="BatteryLife"
+              htmlFor="batteryLife"
               className="block text-sm font-medium leading-6 text-white"
             >
               Battery Life Expectancy
@@ -173,11 +194,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="BatteryLife"
-                id="BatteryLife"
-                value={formData.BatteryLife}
+                name="batteryLife"
+                id="batteryLife"
+                value={formData.batteryLife}
                 onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Battery life Expectancy"
               />
             </div>
@@ -186,7 +207,7 @@ export default function Example() {
           {/* Speed Info form item */}
           <div className="sm:col-span-4 mt-2">
             <label
-              htmlFor="TopSpeed"
+              htmlFor="topSpeed"
               className="block text-sm font-medium leading-6 text-white"
             >
               Top Speed
@@ -194,11 +215,11 @@ export default function Example() {
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
               <input
                 type="text"
-                name="TopSpeed"
-                id="TopSpeed"
-                value={formData.TopSpeed}
+                name="topSpeed"
+                id="topSpeed"
+                value={formData.topSpeed}
                 onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Top speed"
               />
             </div>
@@ -210,7 +231,7 @@ export default function Example() {
           <button
             type="button"
             onClick={handleCancel}
-            className=" rounded-md px-3 py-2 bg-slate-100 text-sm font-semibold leading-6 text-black"
+            className="rounded-md px-3 py-2 bg-slate-100 text-sm font-semibold leading-6 text-black"
           >
             Clear
           </button>
