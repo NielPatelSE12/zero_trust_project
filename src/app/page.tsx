@@ -1,19 +1,29 @@
+<<<<<<< HEAD:src/app/page.tsx
 "use client";
 import Heading from "./drones/heading"
+=======
+import Image from "next/image";
+import Heading from "./drones/heading";
+>>>>>>> befb555a2744b0ec211937a407244052aecd1f74:app/page.tsx
 import './home.css';
+import backgroundImage from "./home.jpeg";
 
 export default function Home() {
   return (
-<div>
-	<Heading/>
-	<div className="welcome-block">
-		<a className = "text-9xl text-gray-200 px-30 font-bold">
-			<p className = "text-center mt-3 mb-5 text-outline">Welcome to Dronify</p>
-		</a>
-		<a className = "text-5xl text-gray-200 px-30 font-bold">
-			<p className = "text-center text-outline">Leading the world in secure drone package delivery</p>
-		</a>
-	</div>
-</div>
-  )
+    <div className="background">
+      <Image
+        src={backgroundImage}
+        alt="Background Image"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+        className="background-image"
+      />
+      <Heading />
+      <div className="welcome-block">
+        <h1 className="text-4xl lg:text-5xl text-center text-gray-900 font-bold mb-6">Welcome to Dronify</h1>
+        <p className="text-lg lg:text-xl text-center text-gray-700">Leading the world in secure drone package delivery</p>
+      </div>
+    </div>
+  );
 }

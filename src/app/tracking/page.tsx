@@ -4,6 +4,17 @@ import Image from "next/image";
 import earth from "./earth-1365995_960_720.jpg";
 import Heading from "../drones/heading"
 
+
+
+
+
+
+
+
+
+
+
+// Function for the Tracking Form
 const Tracking = () => {
   return (
     <>
