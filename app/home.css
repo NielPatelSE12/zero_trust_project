@@ -20,8 +20,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%; /* Cover the entire width of the viewport */
+  height: 100%; /* Cover the entire height of the viewport */
   z-index: -1;
 }
 
