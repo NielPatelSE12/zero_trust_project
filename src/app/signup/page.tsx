@@ -4,7 +4,6 @@ import { useState } from "react";
 import './signup.css'
 import Heading from '../drones/heading'
 
-
 const Signup: React.FC = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -28,13 +27,16 @@ const Signup: React.FC = () => {
                     }}></input>
                     <br></br>
                     <button className="login" onClick={() => {
-                        fetch('http://localhost:5000/signup', {
-                            method: 'POST',
-                            headers: {'Content-Type': 'application/json'},
+                        fetch('/api/NewUser', {
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                              },
+                            method: "POST",
                             body: JSON.stringify({username, password})
-                        }).then(response => response.json().then(
-                            thing => console.log(thing)))
-                        console.log(12345)
+                        }).then(response => (response.json().then(
+                            thing => console.log(thing)
+                        )))
                     }}>Sign Up</button>
                     <br></br>
                 </div>
