@@ -1,17 +1,22 @@
-import React from "react";
-import './tracking.css';
-import Image from "next/image";
-import earth from "./earth-1365995_960_720.jpg";
-import Heading from "../drones/heading";
-import GoogleMaps from "./components/googlemaps"; // Assuming the component name is GoogleMaps
-import { GoogleMap } from "@react-google-maps/api";
+// pages/index.tsx
+'use client'
+import React, { useState } from 'react';
+import Map from './map'
 
-const Tracking = () => {
+const HomePage: React.FC = () => {
+  const [startLocation, setStartLocation] = useState<string>('');
+  const [endLocation, setEndLocation] = useState<string>('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Here you can do additional validation or processing
+  };
+
   return (
     <div>
-      <GoogleMaps/>
+      <Map></Map>
     </div>
   );
-}
+};
 
-export default Tracking;
+export default HomePage;

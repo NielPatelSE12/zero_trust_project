@@ -23,7 +23,8 @@
     "react-collapse": "^5.1.1",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "sqlite": "^5.1.1"
+    "sqlite": "^5.1.1",
+    "urql": "^4.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.12.3",
