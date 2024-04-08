@@ -91,3 +91,7 @@ body{
     font-weight: bold;
     text-decoration-line: underline;
 }
+
+.error{
+    color: red;
+}

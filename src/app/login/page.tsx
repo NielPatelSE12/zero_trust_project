@@ -10,19 +10,22 @@ const Login: React.FC = () => {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = async () => {
-        await fetch('http://localhost:5000/login', {
+        await fetch('/api/userLogin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username, password})
         }).then(response => response.json().then(
             thing => {
-                if (thing === 'valid'){
-                    router.push('/location')
+                console.log(thing)
+                if (thing.message === 'Login successful'){
+                    router.push('/location');
                 }
             else{
-                router.push('/signup')
+                setError('Sorry, we could not find that user');
+                // pass
             }}
                 ))
     }
@@ -50,6 +53,7 @@ const Login: React.FC = () => {
                     <br></br>
                     <div className="sign-up">
                         First time? Sign up <a href="/signup" className="here">here</a>
+                        {error && <h1 className="error">{error}</h1>}
                     </div>
                 </div>
             </div>
