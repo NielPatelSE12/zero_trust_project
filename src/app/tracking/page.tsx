@@ -1,9 +1,10 @@
-// pages/index.tsx
+// pages/TrackingPage.tsx
 'use client'
 import React, { useState } from 'react';
-import Map from './map'
+import Map from './map';
+import './tracking-page.css'; // Import the CSS file
 
-const HomePage: React.FC = () => {
+const TrackingPage: React.FC = () => {
   const [startLocation, setStartLocation] = useState<string>('');
   const [endLocation, setEndLocation] = useState<string>('');
 
@@ -13,10 +14,13 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
-      <Map></Map>
+    <div className="tracking-page-background">
+      <div className="tracking-page-content">
+        <h1 className="text-3xl font-bold mb-4">Tracking Page</h1>
+        <Map />
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default TrackingPage;
