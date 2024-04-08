@@ -73,3 +73,7 @@ body{
     background-color: rgb(179, 179, 179);
     transition: all 0.5s linear;
 }
+
+.error{
+    color: red;
+}
