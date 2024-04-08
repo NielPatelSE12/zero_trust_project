@@ -23,3 +23,9 @@ model Drone {
   topSpeed        Int
   createdAt       DateTime  @default(now())
 }
+
+model Tracking{
+  id Int @id @default(autoincrement())
+  startLocation String
+  endLocation String
+}

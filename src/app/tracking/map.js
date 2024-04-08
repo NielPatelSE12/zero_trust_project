@@ -38,7 +38,7 @@ const Map = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <LoadScript googleMapsApiKey="AIzaSyArrqi_EoEubmYG9lcEeCoCRdYiqS248mA">
+      <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY}>
         {/* Google Map */}
         <GoogleMap
           onLoad={onLoad}
