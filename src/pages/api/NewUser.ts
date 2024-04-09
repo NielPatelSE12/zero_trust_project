@@ -3,6 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 const prisma = new PrismaClient()
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 export default async function userSignup(
   req: NextApiRequest,
   res: NextApiResponse
@@ -28,16 +31,24 @@ export default async function userSignup(
       }
 
       else{
+        // this means that username is not taken yet, so now we take steps to 
+        // generate that user
+        bcrypt.hash(password, saltRounds, async function(err: Error, hash: string) {
+          // generate hash and store hash in db.
+          const user = await prisma.user.create(
+            {
+                data: {
+                    name: username,
+                    password: hash
+                }
+            }
+          )
+          console.log(user)
+          // return code 201 for successful signup
+          return res.status(201).json(user)
+      });
 
-      const user = await prisma.user.create(
-          {
-              data: {
-                  name: username,
-                  password: password
-              }
-          }
-        )
-    return res.status(201).json(user)
+
 
   }
 }

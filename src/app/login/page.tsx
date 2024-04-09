@@ -23,10 +23,13 @@ const Login: React.FC = () => {
                 if (thing.message === 'Login successful'){
                     router.push('/location');
                 }
-            else{
-                setError('Sorry, we could not find that user');
-                // pass
-            }}
+                else if (thing.message === 'Incorrect password'){
+                    setError('Incorrect password');
+                }
+                else{
+                    setError('Sorry, we could not find that user');
+                    // pass
+                }}
                 ))
     }
 

@@ -39,6 +39,7 @@ const Signup: React.FC = () => {
                             body: JSON.stringify({username, password})
                         }).then(response => (response.json().then(
                             thing => {
+                                console.log(thing)
                                 if (thing.message === "User with this username already exists"){
                                     setError("User with this username already exists")
                                 }
