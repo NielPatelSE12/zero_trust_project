@@ -1,6 +1,5 @@
 body{
-    background-image: url('./drone_alert_img.png');
-    background-size: 24.7%;
+    background-color:lightgoldenrodyellow;
 }
 
 .Alerts-Page{
@@ -32,6 +31,7 @@ body{
     font-size:23px;
     font-weight:bold;
 }
+
 
 .Add-New-Alert{
     margin:auto;

@@ -2,16 +2,17 @@
 import React, { useState } from "react";
 import './alerts.css';
 import Heading from "../drones/heading";
+import { useRouter } from "next/navigation";
 
 export default function Alerts() {
+    // Popup
     const [showPopupAlerts, setShowPopupAddNewAlert] = useState(false);
     const [showPopupModifyAlert, setShowPopupModifyAlert] = useState(false);
     const [showPopupDeleteAlert, setShowPopupDeleteAlert] = useState(false);
-    const [nameOfAlert, setNameOfAlert] = useState('');
-    const [reason, setReason] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    const [status, setStatus] = useState('');
 
+    // Popup logic
+
+    // Add new alert
     function addNewAlert() {
         setShowPopupAddNewAlert(true);
     }
@@ -20,6 +21,7 @@ export default function Alerts() {
         setShowPopupAddNewAlert(false);
     }
 
+    // Modify alert
     function modifyAlert(){
         setShowPopupModifyAlert(true);
     }
@@ -28,12 +30,90 @@ export default function Alerts() {
         setShowPopupModifyAlert(false);
     }
 
+    // Delete Alert
     function deleteAlert(){
         setShowPopupDeleteAlert(true);
     }
 
     function closeDeleteAlertPopup(){
         setShowPopupDeleteAlert(false);
+    }
+  
+    // Router
+    const router = useRouter();
+
+    // Input Variables
+    const [nameOfAlert, setNameOfAlert] = useState('');
+    const [reason, setReason] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [status, setStatus] = useState('');
+    const[alertID, setAlertID] = useState('')
+    const [error, setError] = useState('');
+
+
+    // Connecting to database
+
+    // Add Alert
+    const handleAddAlert = async () => {
+        await fetch('/api/alerts', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({nameOfAlert,reason,errorMessage,status})
+        }).then(response => response.json().then(
+            thing => {
+                console.log(thing)
+                if (thing.message === ''){ // If the alert can be added successfully
+                    router.push('/location');
+                }
+                else if (thing.message === ''){ // If the alert is not added successfully
+                    setError('');
+                }
+                else{ 
+                    setError('');
+                }}
+        ))
+    }
+
+    // Modify Alert
+    const handleModifyAlert = async () => {
+        await fetch('/api/alerts', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({nameOfAlert,reason,errorMessage,status})
+        }).then(response => response.json().then(
+            thing => {
+                console.log(thing)
+                if (thing.message === ''){ // If the alert can be modified successfully
+                    router.push('/location');
+                }
+                else if (thing.message === ''){ // If the alert is not modified successfully
+                    setError('');
+                }
+                else{ 
+                    setError('');
+                }}
+        ))
+    }
+
+    // Delete Alert
+    const handleDeleteAlert = async () => {
+        await fetch('/api/alerts', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({alertID})
+        }).then(response => response.json().then(
+            thing => {
+                console.log(thing)
+                if (thing.message === ''){ // If the alert can be modified successfully
+                    router.push('/location');
+                }
+                else if (thing.message === ''){ // If the alert is not modified successfully
+                    setError('');
+                }
+                else{ 
+                    setError('');
+                }}
+        ))
     }
 
     return (
@@ -69,7 +149,9 @@ export default function Alerts() {
                                     setStatus(e.target.value)
                                 }}></input>
                                 <br></br>
-                                <button className="confirm-btn"><p>Confirm</p></button>
+                                <button className="confirm-btn" onClick={() => {
+                                handleAddAlert(), closeAddNewAlertPopup();
+                    }}><p>Confirm</p></button>
                                 <div className="close-btn" onClick={closeAddNewAlertPopup}>&times;</div>
                             </div>
                         </div>
@@ -100,7 +182,9 @@ export default function Alerts() {
                                     setStatus(e.target.value)
                                 }}></input>
                                 <br></br>
-                                <button className="modify-btn"><p>Modify</p></button>
+                                <button className="modify-btn" onClick={() => {
+                                handleModifyAlert(),closeModifyAlertPopup();
+                    }}><p>Modify</p></button>
                                 <div className="close-btn" onClick={closeModifyAlertPopup}>&times;</div>
                             </div>
                         </div>
@@ -120,7 +204,10 @@ export default function Alerts() {
                                     setNameOfAlert(e.target.value)
                                 }}></input>
                                 <br></br><br></br><br></br>
-                                <button className="delete-btn"><p>Delete</p></button>
+                                <button className="delete-btn" onClick={() => {
+                                    handleDeleteAlert(),
+                                    closeDeleteAlertPopup();
+                                }}><p>Delete</p></button>
                                 <div className="close-btn" onClick={closeDeleteAlertPopup}>&times;</div>
                             </div>
                         </div>
