@@ -6,34 +6,25 @@ body{
 .Alerts-Page{
     margin:auto;
     border-color: black;
-    border-width:5px;
-    border-radius:3%;
-    padding:10px;
-    width:450px;
-    height:45px;
     font-weight:bold;
     margin-top:10px;
     font-size:15px;
 }
 
-.logo{
-    position:absolute;
-    top:10px;
-    right:0;
-    width:250px;
-    height:250px;
+.heading{
+    font-size:40px;
+    margin: auto;
+    border-width:5px;
+    width:100px;
+    height:100px;
+    padding:10%;
 }
 
-
 .Alert-Features{
-    position:absolute;
-    top: 100px;
-    margin-top: 40px;
-    margin-left: 107px;
-    margin-bottom:1px;
+    margin:auto;
     text-align:center;
-    border-color: magenta;
-    border-width:8px;
+    border-color: black;
+    border-width:5px;
     border-radius:5%;
     padding:10px;
     width:200px;
@@ -43,12 +34,7 @@ body{
 }
 
 .Add-New-Alert{
-    position:absolute;
-    top:250px;
-    left: 10px;
-    margin-top:25px;
-    margin-right:50px;
-    margin-left:108px;
+    margin:auto;
     text-align:center;
     border-color: black;
     border-width:3px;
@@ -60,15 +46,14 @@ body{
     background:rgb(3,253,3);
 }
 
+
+
 .Add-New-Alert:hover{
     background:  greenyellow;
 }
 
 .Modify-Alert{
-    position:absolute;
-    top:250px;
-    margin-top:25px;
-    margin-left:108px;
+    margin:auto;
     text-align:center;
     border-color: black;
     border-width:3px;
@@ -85,12 +70,7 @@ body{
 }
 
 .Delete-Alert{
-    position:absolute;
-    top:250px;
-    left:775px;
-    margin-top:25px;
-    margin-left:108px;
-    text-align:center;
+    margin: auto;
     border-color: black;
     border-width:3px;
     border-radius:5%;

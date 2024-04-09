@@ -39,18 +39,13 @@ export default function Alerts() {
     return (
         <>
             <Heading/>
+            <br></br>
+            <br></br>
             <div className='Alerts-Page'>
-                
-                <div className = "heading">
-                    <h1>Drone Alerts</h1>
-                </div>
-                <div className = "logo">
-                <img src = "dronify.png"></img>
-                </div>
                 <div className='Alert-Features'>
                     <h1> Alert Features </h1>  
                 </div>
-
+                <br></br>
                 <div className='Alert-container'>
                     <div className='Add-New-Alert'>
                         <button className="Add-New-Alert-btn" onClick={addNewAlert}> ADD ALERT </button>
@@ -79,7 +74,7 @@ export default function Alerts() {
                             </div>
                         </div>
                     )}
-
+                    <br></br>
                     <div className='Modify-Alert'>
                         <button className = "modify-alert-btn" onClick ={modifyAlert}> MODIFY ALERT </button>
                     </div>
@@ -110,7 +105,7 @@ export default function Alerts() {
                             </div>
                         </div>
                     )}
-
+                     <br></br>
                     <div className='Delete-Alert'>
                         <button className = "delete-alert-btn" onClick ={deleteAlert}> DELETE ALERT </button>
                     </div>
