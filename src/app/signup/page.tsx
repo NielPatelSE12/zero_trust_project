@@ -44,6 +44,7 @@ const Signup: React.FC = () => {
                                     setError("User with this username already exists")
                                 }
                                 else{
+                                    sessionStorage.setItem('token', thing.token);
                                     router.push('/location')
                                 }
                             }

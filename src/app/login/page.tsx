@@ -21,6 +21,7 @@ const Login: React.FC = () => {
             thing => {
                 console.log(thing)
                 if (thing.message === 'Login successful'){
+                    sessionStorage.setItem('token', thing.token);
                     router.push('/location');
                 }
                 else if (thing.message === 'Incorrect password'){

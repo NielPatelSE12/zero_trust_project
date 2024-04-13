@@ -9,6 +9,8 @@ export default function EditDronePage() {
   const searchParams = useSearchParams();
   const droneId = searchParams.get("id");
 
+  const token = sessionStorage.getItem('token');
+
   const [formData, setFormData] = useState({
     name: "",
     model: "",
@@ -58,7 +60,7 @@ export default function EditDronePage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({formData, token}),
         }
       );
   
