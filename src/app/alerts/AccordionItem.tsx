@@ -53,7 +53,6 @@ export default function AccordionItem({
                 <th>Name of Alert</th>
                 <th>Reason</th>
                 <th>Error Message</th>
-                <th>Serial Number</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -62,7 +61,6 @@ export default function AccordionItem({
                 <td>{data.nameOfAlert}</td>
                 <td>{data.reason}</td>
                 <td>{data.errorMessage}</td>
-                <td>{data.id}</td>
                 <td>{data.status}</td>
               </tr>
             </tbody>

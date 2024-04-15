@@ -16,7 +16,6 @@ export default function EditAlertPage() {
     reason: "",
     errorMessage: "",
     status: "",
-    serialNumber: "",
   });
 
   const [error, setError] = useState('')
@@ -65,7 +64,7 @@ export default function EditAlertPage() {
   
       if (!response.ok) {
         console.log('The error is ' + response.status);
-        setError('Hmm, we can\'t make an alert. Make sure all fields are complete and that your serial number is unique!');
+        setError('Hmm, we can\'t make an alert. Make sure all fields are complete!');
         throw new Error(
           `Failed to ${alertId ? "update" : "create"} alert`
         );
@@ -80,7 +79,6 @@ export default function EditAlertPage() {
         nameOfAlert: "",
         reason: "",
         errorMessage: "",
-        serialNumber: "",
         status: "",
       });
 
@@ -96,7 +94,6 @@ export default function EditAlertPage() {
       reason: "",
       errorMessage: "",
       status: "",
-      serialNumber: "",
     });
   };
 
@@ -167,27 +164,6 @@ export default function EditAlertPage() {
                 onChange={handleChange}
                 className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-black placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Error Message"
-              />
-            </div>
-          </div>
-
-          {/* Serial Number form item */}
-          <div className="sm:col-span-4 mt-2">
-            <label
-              htmlFor="serialNumber"
-              className="block text-sm font-medium leading-6 text-black"
-            >
-              Serial Number
-            </label>
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-              <input
-                type="text"
-                name="serialNumber"
-                id="serialNumber"
-                value={formData.serialNumber}
-                onChange={handleChange}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-black placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                placeholder="Serial Number"
               />
             </div>
           </div>
