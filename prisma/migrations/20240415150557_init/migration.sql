@@ -26,5 +26,14 @@ CREATE TABLE "Tracking" (
     "endLocation" TEXT NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "Alert" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nameOfAlert" TEXT NOT NULL,
+    "reason" TEXT NOT NULL,
+    "errorMessage" TEXT NOT NULL,
+    "status" TEXT NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Drone_serialNumber_key" ON "Drone"("serialNumber");

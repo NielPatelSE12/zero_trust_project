@@ -12,19 +12,25 @@ export default async function handle(
 
     const auth = req.headers.authorization;
     const token = auth.split(' ')[1];
-    const decoded = jwt.verify(token, JWT_KEY);
+    try {
+      console.log('the token is ' + token.length);
+      const decoded = jwt.verify(token, JWT_KEY);
+    
 
-    console.log(decoded)
-    console.log(decoded.userID)
+      console.log(decoded)
+      console.log(decoded.userID)
 
-    const result = await prisma.drone.findMany({
+      const result = await prisma.drone.findMany({
       where: {
         ownerID: decoded.userID
       }
-    })
+      })
 
-    console.log('res belowwwww');
-    console.log(result);
+      console.log('res belowwwww');
+      console.log(result);
     
     return res.status(201).json(result)
+  } catch (error) {
+    console.log('error found')
+  }
 }

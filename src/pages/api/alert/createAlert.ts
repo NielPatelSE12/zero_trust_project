@@ -10,7 +10,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const { nameOfAlert, reason, errorMessage , status } = req.body;
       console.log("Alert Information recieved!!",req.body);
-
       const newAlert = await prisma.alert.create({
         data: {
           nameOfAlert: nameOfAlert,
