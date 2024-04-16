@@ -14,7 +14,8 @@ export function middleware(request: NextRequest) {
     return response;
 }
 
+
 export const config = {
     matcher: '/',
 };
-
+ 
