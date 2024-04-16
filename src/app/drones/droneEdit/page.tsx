@@ -2,10 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Heading from "../heading";
+import { useRouter } from "next/navigation";
 
 export default function EditDronePage() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const droneId = searchParams.get("id");
+
+  // const token = sessionStorage.getItem('token');
+
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getToken = sessionStorage.getItem('token');
+    setToken(getToken);
+  }, [])
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +26,8 @@ export default function EditDronePage() {
     batteryLife: "",
     topSpeed: "",
   });
+
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (droneId) {
@@ -54,14 +67,21 @@ export default function EditDronePage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({formData, token}),
         }
       );
   
       if (!response.ok) {
+        // log the error in console and set the error to display to the user
+        console.log('The error is ' + response.status);
+        setError('Hmm, we can\'t make this drone. Make sure all fields are complete and that your serial number is unique!');
         throw new Error(
           `Failed to ${droneId ? "update" : "create"} drone`
         );
+      }
+      else{
+        // send user back to regular drones page after they SUCCESSFULLY save a new drone
+        router.push('/drones')
       }
   
       // Reset form data after submission
@@ -222,6 +242,10 @@ export default function EditDronePage() {
                 className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder-text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 placeholder="Top speed"
               />
+            </div>
+            {/* display the error to the user if an error is raised upon form submission */}
+            <div className="mt-10 text-red-600 font-bold text-xl">
+                {error && <h1>{error}</h1>}
             </div>
           </div>
         </div>

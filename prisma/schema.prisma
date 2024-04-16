@@ -11,6 +11,7 @@ model User {
   id      Int      @id @default(autoincrement())
   name    String?  
   password String
+  drones  Drone[]
 }
 
 model Drone {
@@ -22,10 +23,20 @@ model Drone {
   batteryLife     Int
   topSpeed        Int
   createdAt       DateTime  @default(now())
+  ownerID         Int
+  owner           User @relation(fields: [ownerID], references: [id])
 }
 
 model Tracking{
   id Int @id @default(autoincrement())
   startLocation String
   endLocation String
+}
+
+model Alert{
+  id Int @id @default(autoincrement())
+  nameOfAlert String
+  reason String
+  errorMessage String
+  status String
 }

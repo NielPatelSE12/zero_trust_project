@@ -21,12 +21,16 @@ const Login: React.FC = () => {
             thing => {
                 console.log(thing)
                 if (thing.message === 'Login successful'){
+                    sessionStorage.setItem('token', thing.token);
                     router.push('/location');
                 }
-            else{
-                setError('Sorry, we could not find that user');
-                // pass
-            }}
+                else if (thing.message === 'Incorrect password'){
+                    setError('Incorrect password');
+                }
+                else{
+                    setError('Sorry, we could not find that user');
+                    // pass
+                }}
                 ))
     }
 
