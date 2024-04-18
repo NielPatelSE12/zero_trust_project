@@ -14,7 +14,9 @@ CREATE TABLE "Drone" (
     "serialNumber" INTEGER NOT NULL,
     "batteryLife" INTEGER NOT NULL,
     "topSpeed" INTEGER NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "ownerID" INTEGER NOT NULL,
+    CONSTRAINT "Drone_ownerID_fkey" FOREIGN KEY ("ownerID") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -22,6 +24,15 @@ CREATE TABLE "Tracking" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "startLocation" TEXT NOT NULL,
     "endLocation" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Alert" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nameOfAlert" TEXT NOT NULL,
+    "reason" TEXT NOT NULL,
+    "errorMessage" TEXT NOT NULL,
+    "status" TEXT NOT NULL
 );
 
 -- CreateIndex

@@ -1,34 +1,50 @@
 'use client'
-// pages/TrackingPage.tsx
-import React, { useState } from 'react';
-import './tracking-page.css'; // Import the CSS file
-import Map from './map';
+import React, { useState, useEffect } from 'react';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const TrackingPage: React.FC = () => {
-  const [startLocation, setStartLocation] = useState<string>('');
-  const [endLocation, setEndLocation] = useState<string>('');
+const MapContainer = () => {
+  const [dronePosition, setDronePosition] = useState({ lat: 0, lng: 0 });
+  const [truckPosition, setTruckPosition] = useState({ lat: 0, lng: 0 });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Here you can do additional validation or processing
-  };
+  useEffect(() => {
+    const moveMarkers = () => {
+      // Simulate fetching data from Amazon APIs
+      // In a real application, replace this with actual API calls
+      const fetchDroneData = async () => {
+        // Simulate fetching drone position
+        const droneResponse = await fetch('url_to_drone_api');
+        const droneData = await droneResponse.json();
+        setDronePosition({ lat: droneData.lat, lng: droneData.lng });
+      };
+
+      const fetchTruckData = async () => {
+        // Simulate fetching truck position
+        const truckResponse = await fetch('url_to_truck_api');
+        const truckData = await truckResponse.json();
+        setTruckPosition({ lat: truckData.lat, lng: truckData.lng });
+      };
+
+      fetchDroneData();
+      fetchTruckData();
+    };
+
+    const interval = setInterval(moveMarkers, 5000); // Update positions every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="tracking-page-background">
-      <div className="tracking-page-content">
-        <h1 className="text-3xl font-bold mb-4">Track Drone</h1>
-      </div>
-      <Map></Map>
-      <iframe
-        title="Address Selection"
-        src="https://storage.googleapis.com/maps-solutions-12mhj3dmsg/address-selection/zks3/address-selection.html"
-        width="200%"
-        height="500px"
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
-    </div>
+    <LoadScript googleMapsApiKey="AIzaSyDW8kEZtLoBlYUlOnepYaRNEc-OUKiav5c">
+      <GoogleMap
+        mapContainerStyle={{ width: '100%', height: '400px' }}
+        center={{ lat: 0, lng: 0 }} // Initial center of the map
+        zoom={4} // Initial zoom level
+      >
+        <Marker position={dronePosition} />
+        <Marker position={truckPosition} />
+      </GoogleMap>
+    </LoadScript>
   );
 };
 
-export default TrackingPage;
+export default MapContainer;

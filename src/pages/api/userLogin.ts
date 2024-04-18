@@ -4,6 +4,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const prisma = new PrismaClient()
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const JWT_KEY = process.env.JWT_KEY;
 const saltRounds = 10;
 
 export default async function userSignup(
@@ -37,7 +39,10 @@ export default async function userSignup(
           // if true, send successful login message
           console.log('found user')
           console.log(user)
-          return res.status(200).json({ message: 'Login successful' });
+          // here we generate a user authentication token when user successfully logs in and we send it back to client
+          const token = jwt.sign({username: user[0].name, userID: user[0].id}, JWT_KEY, {expiresIn: '1h'});
+          console.log(token)
+          return res.status(200).json({ message: 'Login successful', token: token });
         }
 
         else{

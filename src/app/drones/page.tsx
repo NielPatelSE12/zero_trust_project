@@ -5,6 +5,8 @@ import AccordionItem from "./AccordionItem";
 import { AiOutlinePlus } from "react-icons/ai";
 import Heading from "./heading";
 
+
+
 interface Drone {
   id: number;
   name: string;
@@ -20,7 +22,14 @@ export default function Page() {
   const [drones, setDrones] = useState<Drone[]>([]);
 
   useEffect(() => {
-    fetch('/api/getAllDrones')
+    const token = sessionStorage.getItem('token');
+    
+    console.log('on fetch ' + token);
+    fetch('/api/getAllDrones', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
       .then(response => response.json())
       .then(data => setDrones(data))
       .catch(error => console.error('Error fetching drones:', error));
