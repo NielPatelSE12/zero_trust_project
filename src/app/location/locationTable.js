@@ -44,7 +44,7 @@ export default function LocationTable() {
           <tr key={location.id}>
             <td>{location.id}</td>
             <td>{location.locationName}</td>
-            <td>{location.locationCords}</td> {/* Assume typo fixed from locationCords to locationCoords */}
+            <td>{location.locationCords}</td> 
             <td>{location.locationAlg}</td>
           </tr>
         ))}
