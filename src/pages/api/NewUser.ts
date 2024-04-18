@@ -5,6 +5,8 @@ const prisma = new PrismaClient()
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken')
+const JWT_KEY = process.env.JWT_KEY;
 
 export default async function userSignup(
   req: NextApiRequest,
@@ -44,6 +46,9 @@ export default async function userSignup(
             }
           )
           console.log(user)
+          const token = jwt.sign({username: user.name, userID: user.id}, JWT_KEY, {expiresIn: '1h'});
+          console.log(token)
+          return res.status(200).json({ message: 'Login successful', token: token });
           // return code 201 for successful signup
           return res.status(201).json(user)
       });

@@ -3,10 +3,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
 
+const jwt = require('jsonwebtoken');
+const JWT_KEY='bd0ddb1aeed560dceec87544deab0aa2fc7251293692c6082ebecb9729420314'
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
+    console.log('BODYY')
+    console.log(req.body)
     try {
-      const { name, model, make, serialNumber, batteryLife, topSpeed } = req.body;
+      const { name, model, make, serialNumber, batteryLife, topSpeed } = req.body.formData;
+      const token = req.body.token;
+      const decoded = jwt.verify(token, JWT_KEY);
+
 
       const serialNumberInt = parseInt(serialNumber);
       const batteryLifeInt = parseInt(batteryLife);
@@ -20,6 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           serialNumber: serialNumberInt,
           batteryLife: batteryLifeInt,
           topSpeed: topSpeedInt,
+          ownerID: decoded.userID,
         },
       });
 
