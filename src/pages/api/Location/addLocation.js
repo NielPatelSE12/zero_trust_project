@@ -3,13 +3,13 @@ const prisma = new PrismaClient();
 
 export default async function handle(req, res) {
   if (req.method === 'POST') {
-    const { locationName, locationCords, locationAlg } = req.body; // Ensuring field names are correct
+    const { locationName, locationCords, locationAlg } = req.body; 
     try {
       const location = await prisma.location.create({
         data: {
           locationName,
-          locationCords, // This should directly map to your database field
-          locationAlg, // This should directly map to your database field
+          locationCords, 
+          locationAlg, 
         },
       });
       res.status(200).json(location);

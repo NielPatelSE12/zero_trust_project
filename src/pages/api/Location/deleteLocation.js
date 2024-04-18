@@ -3,14 +3,14 @@ const prisma = new PrismaClient();
 
 export default async function handle(req, res) {
   if (req.method === 'POST') {
-    const { locationId } = req.body;  // Ensure this name matches exactly what you send from the client
+    const { locationId } = req.body;  
     try {
       const location = await prisma.location.delete({
-        where: { id: parseInt(locationId, 10) },  // Good to specify radix in parseInt
+        where: { id: parseInt(locationId, 10) }, 
       });
       res.status(200).json(location);
     } catch (error) {
-      console.error(error);  // Logging the actual error can help in debugging
+      console.error(error);  
       res.status(400).json({ error: `Location could not be deleted: ${error.message}` });
     }
   } else {

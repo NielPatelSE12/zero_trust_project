@@ -34,12 +34,12 @@ export default function Forms() {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data = {
-            locationName: formData.get('locationName'), // Ensure the form input has name="locationName"
-            locationCords: formData.get('locationCoordinates'), // Ensure the form input has name="locationCoordinates"
-            locationAlg: formData.get('algorithm'), // Ensure the form input has name="algorithm"
+            locationName: formData.get('locationName'), 
+            locationCords: formData.get('locationCoordinates'), 
+            locationAlg: formData.get('algorithm'), 
         };
         console.log(data);
-        handleSubmit('/api/Location/addLocation', data); // Check and correct the endpoint if needed
+        handleSubmit('/api/Location/addLocation', data); 
     };
     
 
@@ -47,7 +47,7 @@ export default function Forms() {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data = {
-            locationId: formData.get('locationId'),  // Ensure this matches the 'name' attribute of your input field
+            locationId: formData.get('locationId'),  
         };
         handleSubmit('/api/Location/deleteLocation', data);
     };
@@ -57,8 +57,8 @@ export default function Forms() {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const data = {
-            locationId: formData.get('locationId'),  // This key should exactly match the server's expected key
-            newlocationName: formData.get('newLocationName'),  // Adjust to match case sensitivity with the backend
+            locationId: formData.get('locationId'),  
+            newlocationName: formData.get('newLocationName'),  
         };
         handleSubmit('/api/Location/updateLocation', data);
     };
