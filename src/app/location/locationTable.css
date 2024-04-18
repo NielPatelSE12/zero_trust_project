@@ -1,0 +1,32 @@
+/* Basic table styles */
+table {
+    width: 80%; 
+    border-collapse: collapse; 
+    margin: 2% 10%; 
+    font-family: Arial, sans-serif; 
+}
+
+/* Table header styles */
+th {
+    /*block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500*/
+    background-color: #1414ff;
+    color: white; 
+    padding: 10px; 
+    text-align: left; 
+}
+
+/* Table row and cell styles */
+td {
+    border: 1px solid #ddd;
+    padding: 8px; 
+}
+
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #ddd; 
+}

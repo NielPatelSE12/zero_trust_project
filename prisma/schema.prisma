@@ -29,3 +29,10 @@ model Tracking{
   startLocation String
   endLocation String
 }
+
+model Location {
+  id            Int    @id @default(autoincrement())
+  locationName  String
+  locationCords String
+  locationAlg   String
+}
