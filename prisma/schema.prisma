@@ -39,3 +39,11 @@ model Location {
   locationCords String
   locationAlg   String
 }
+
+model Alert{
+  id Int @id @default(autoincrement())
+  nameOfAlert String
+  reason String
+  errorMessage String
+  status String
+}
