@@ -31,3 +31,5 @@ https://github.com/NielPatelSE12/zero_trust_project/graphs/contributors
 
 # License
 # Resources
+![image](https://github.com/NielPatelSE12/zero_trust_project/assets/131837334/d37bd63d-4166-4bc0-b77f-c7f159c3db16)
+
