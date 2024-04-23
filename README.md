@@ -18,9 +18,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 # Welcome to our Zero Trust Project Github
 # Description
 ### What is Zero Trust:
-Security  strategy model that ensures protection against several cyberattacks and expanding attacks. The point is to make sure that when people sign into the website, it will not be logged in by any device.
-
+Security  strategy model that ensures protection against several cyberattacks and expanding attacks. This is used to secure the customer's data like their address, account number, etc. We are also using strict credentials to make sure that not any user or device can just sign into the application.
+![image](https://github.com/NielPatelSE12/zero_trust_project/assets/131837334/d37bd63d-4166-4bc0-b77f-c7f159c3db16)
 # Website:
+ ![website homepage](https://github.com/NielPatelSE12/zero_trust_project/assets/131837334/ab8e8bdb-b55d-490b-9ea8-1bb5b280e0d9)
 
 ### Languages: 
 
@@ -31,5 +32,5 @@ https://github.com/NielPatelSE12/zero_trust_project/graphs/contributors
 
 # License
 # Resources
-![image](https://github.com/NielPatelSE12/zero_trust_project/assets/131837334/d37bd63d-4166-4bc0-b77f-c7f159c3db16)
+
 
