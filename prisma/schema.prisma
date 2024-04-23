@@ -11,7 +11,7 @@ model User {
   id      Int      @id @default(autoincrement())
   name    String?  
   password String
-  drones  Drone[]
+  drones Drone[]
 }
 
 model Drone {
@@ -31,6 +31,13 @@ model Tracking{
   id Int @id @default(autoincrement())
   startLocation String
   endLocation String
+}
+
+model Location {
+  id            Int    @id @default(autoincrement())
+  locationName  String
+  locationCords String
+  locationAlg   String
 }
 
 model Alert{

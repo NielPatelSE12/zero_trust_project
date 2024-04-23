@@ -27,12 +27,11 @@ CREATE TABLE "Tracking" (
 );
 
 -- CreateTable
-CREATE TABLE "Alert" (
+CREATE TABLE "Location" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "nameOfAlert" TEXT NOT NULL,
-    "reason" TEXT NOT NULL,
-    "errorMessage" TEXT NOT NULL,
-    "status" TEXT NOT NULL
+    "locationName" TEXT NOT NULL,
+    "locationCords" TEXT NOT NULL,
+    "locationAlg" TEXT NOT NULL
 );
 
 -- CreateIndex
