@@ -39,7 +39,7 @@ const Login: React.FC = () => {
             <Heading/>
             <div className="login-block">
                 <div className="welcome">
-                    <h1>Welcome Back</h1>
+                    <h1>Manage your Data</h1>
                     <img src={dronify.src} className="dronify"/>
                 </div>
                 <div className="input-block">

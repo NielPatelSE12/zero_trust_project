@@ -1,28 +1,55 @@
 .welcome-block {
   background:url("./homepagebackground.png");
   max-width: 600px;
-  margin: 16% 28%; 
+  margin: 9% 28%; 
   padding: 10px;
 }
 
 @media (min-width: 768px) {
   .welcome-block {
-    padding: 60px;
+    padding: 20px;
   }
-}
-
-.background{
-  background: url("./homepagebackground.png")
 }
 
 
 .background-image {
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
-  width: 100%; /* Cover the entire width of the viewport */
-  height: 100%; /* Cover the entire height of the viewport */
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
+
+.sentence-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.sentence-box {
+  width: 200px;
+  height: 200px;
+  background: url("./homepageimage.jpeg");
+  background-size: cover; /* Ensure the image covers the entire box */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Increased box shadow for depth */
+  font-family: 'Bubblegum Sans', cursive; /* Bubble letters font */
+  color: white;
+  position: relative;
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg); /* Apply perspective and rotation */
+  opacity: 0.7; /* Adjust the opacity to make the image lighter */
+}
+
+.sentence-box p {
+  margin: 0;
+}
+
+
+
+
 
 
