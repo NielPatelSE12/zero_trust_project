@@ -8,7 +8,7 @@ async function HighmapsDemo() {
 
     const chart = Highcharts.mapChart('container', {
         title: {
-            text: 'One Drone One Truck Tracking',
+            text: 'Highmaps simple flight routes demo',
             align: 'left'
         },
         legend: {
@@ -137,39 +137,24 @@ async function HighmapsDemo() {
         })
         .add();
 
-    // Function to check boundaries and update position
-    function updatePosition(image, newX, newY) {
-        const chartWidth = chart.plotWidth;
-        const chartHeight = chart.plotHeight;
-
-        // Calculate boundaries
-        const minX = 0;
-        const maxX = chartWidth - image.attr('width');
-        const minY = 0;
-        const maxY = chartHeight - image.attr('height');
-
-        // Ensure the new position stays within boundaries
-        const constrainedX = Math.min(Math.max(newX, minX), maxX);
-        const constrainedY = Math.min(Math.max(newY, minY), maxY);
-
-        image.attr({
-            x: constrainedX,
-            y: constrainedY
-        });
-    }
-
     // Handle dragging for the drone image
     droneImage.on('drag', function (e) {
         const newX = e.newTargetX;
         const newY = e.newTargetY;
-        updatePosition(droneImage, newX, newY);
+        droneImage.attr({
+            x: newX,
+            y: newY
+        });
     });
 
     // Handle dragging for the truck image
     truckImage.on('drag', function (e) {
         const newX = e.newTargetX;
         const newY = e.newTargetY;
-        updatePosition(truckImage, newX, newY);
+        truckImage.attr({
+            x: newX,
+            y: newY
+        });
     });
 
     chart.addSeries({
