@@ -1,14 +1,14 @@
-'use client';
+'use client'
 import React from 'react';
-import HighmapsComponent from '../tracking/map';
+import FlightMap from './map';
 
-const YourPage: React.FC = () => {
-    return (
-        <div>
-            <h1>Your Page Title</h1>
-            <HighmapsComponent />
-        </div>
-    );
+const Page: React.FC = () => {
+  return (
+    <div>
+      <FlightMap></FlightMap>
+      <script src="/map.js" />
+    </div>
+  );
 };
 
-export default YourPage;
+export default Page;

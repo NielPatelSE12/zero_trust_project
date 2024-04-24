@@ -8,7 +8,7 @@ async function HighmapsDemo() {
 
     const chart = Highcharts.mapChart('container', {
         title: {
-            text: 'Highmaps simple flight routes demo',
+            text: 'One Drone One Truck Tracking',
             align: 'left'
         },
         legend: {
@@ -109,8 +109,71 @@ async function HighmapsDemo() {
     const londonPoint = chart.get('London'),
         lerwickPoint = chart.get('Lerwick');
 
+    const droneImage = chart.renderer
+        .image(
+            'https://www.svgrepo.com/show/16754/drone.svg',
+            londonPoint.plotX - 15, // Adjust position
+            londonPoint.plotY - 15, // Adjust position
+            30,  // Width
+            30   // Height
+        )
+        .attr({
+            zIndex: 10,
+            draggable: true // Make the drone image draggable
+        })
+        .add();
+
+    const truckImage = chart.renderer
+        .image(
+            'https://www.svgrepo.com/show/132485/truck.svg',
+            lerwickPoint.plotX - 15, // Adjust position
+            lerwickPoint.plotY - 15, // Adjust position
+            30,  // Width
+            30   // Height
+        )
+        .attr({
+            zIndex: 10,
+            draggable: true // Make the truck image draggable
+        })
+        .add();
+
+    // Function to check boundaries and update position
+    function updatePosition(image, newX, newY) {
+        const chartWidth = chart.plotWidth;
+        const chartHeight = chart.plotHeight;
+
+        // Calculate boundaries
+        const minX = 0;
+        const maxX = chartWidth - image.attr('width');
+        const minY = 0;
+        const maxY = chartHeight - image.attr('height');
+
+        // Ensure the new position stays within boundaries
+        const constrainedX = Math.min(Math.max(newX, minX), maxX);
+        const constrainedY = Math.min(Math.max(newY, minY), maxY);
+
+        image.attr({
+            x: constrainedX,
+            y: constrainedY
+        });
+    }
+
+    // Handle dragging for the drone image
+    droneImage.on('drag', function (e) {
+        const newX = e.newTargetX;
+        const newY = e.newTargetY;
+        updatePosition(droneImage, newX, newY);
+    });
+
+    // Handle dragging for the truck image
+    truckImage.on('drag', function (e) {
+        const newX = e.newTargetX;
+        const newY = e.newTargetY;
+        updatePosition(truckImage, newX, newY);
+    });
+
     chart.addSeries({
-        name: 'London flight routes',
+        name: 'Drone',
         type: 'mapline',
         lineWidth: 2,
         color: Highcharts.getOptions().colors[3],
@@ -139,7 +202,7 @@ async function HighmapsDemo() {
     }, true, false);
 
     chart.addSeries({
-        name: 'Lerwick flight routes',
+        name: 'Truck',
         type: 'mapline',
         lineWidth: 2,
         color: Highcharts.getOptions().colors[5],
@@ -158,8 +221,6 @@ async function HighmapsDemo() {
         }]
     }, true, false);
 }
- 
-
 
 const HighmapsComponent = () => {
     useEffect(() => {
